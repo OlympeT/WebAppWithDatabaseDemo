@@ -48,7 +48,7 @@ jobs:
     displayName: 'Prepare analysis on SonarCloud'
     inputs:
       SonarCloud: 'Sonar test'
-      organization: 'olympet'
+      organization: 'sonartestudemy'
       scannerMode: 'MSBuild'
       projectKey: 'WebAppWithDatabaseDemo'
   
