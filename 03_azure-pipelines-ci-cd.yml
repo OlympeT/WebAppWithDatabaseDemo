@@ -52,9 +52,10 @@ stages:
         command: restore
         projects: '**/WebApp.csproj'
     
-    - task: WhiteSource Bolt@20
+    - task: WhiteSource@21
       displayName: Scan Nuget Packages
-      enabled: ${{ parameters.runCompletePipeline }}
+      inputs:
+        cwd: '$(System.DefaultWorkingDirectory)'
 
     - task: PowerShell@2
       displayName: Prepare for Sonar Cloud
@@ -182,7 +183,7 @@ stages:
   displayName: Create & Deploy to Dev
   dependsOn: Build_Stage
   variables:
-    azureSubscription: 'Azure subscription 1' # couldn't be referenced
+    azureSubscription: 'Azure subscription 1(b19338e5-368e-4f1d-b894-d5bdfe7a3cf1)' # couldn't be referenced
     ResourceGroupName: '$(Prefix)-$(Release.EnvironmentName)-$(UniqueId)-RG'
     Database.Admin: 'olympe'
     Database.Password: '@Aa123456' # to be secured in Key Vault
@@ -213,7 +214,7 @@ stages:
       displayName: Validate ARM templates
       enabled: ${{ parameters.runCompletePipeline }}
       inputs:
-        azureSubscription: 'Azure subscription 1'
+        azureSubscription: 'Azure subscription 1(b19338e5-368e-4f1d-b894-d5bdfe7a3cf1)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '$(ResourceGroupName)'
         location: 'West Europe'
@@ -281,7 +282,7 @@ stages:
       enabled: ${{ parameters.runCompletePipeline }}
       continueOnError: true
       inputs:
-        ConnectedServiceNameARM: 'WebAppWithDatabaseDemo_spn'
+        ConnectedServiceNameARM: 'Azure subscription 1(b19338e5-368e-4f1d-b894-d5bdfe7a3cf1)'
         GenerateMethodParameterSetSelection: 'ResourceGroupName'
         ResourceGroupName: '$(ResourceGroupName)'
         SubscriptionId: '4b72ed90-7ca3-4e76-8d0f-31a2c0bee7a3'
