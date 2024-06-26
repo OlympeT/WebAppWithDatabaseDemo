@@ -156,11 +156,6 @@ stages:
       inputs:
         restoreSolution: WebAppWithDatabase.sln
 
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: UI-Test'
-      inputs:
-        ArtifactName: ui-tests
-
   - job: Infrastructure
     displayName: Publish Infra files
     pool:
