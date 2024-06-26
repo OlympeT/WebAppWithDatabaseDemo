@@ -50,7 +50,8 @@ jobs:
       SonarCloud: 'Sonar Cloud'
       organization: 'sonartestudemy'
       scannerMode: 'MSBuild'
-      projectKey: 'sonartestudemy'
+      projectKey: 'sonartestudemy_sonartest'
+      projectName: 'sonartestudemy'
   
   - task: DotNetCoreCLI@2
     displayName: Build
