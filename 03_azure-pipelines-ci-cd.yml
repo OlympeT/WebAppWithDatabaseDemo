@@ -155,6 +155,17 @@ stages:
       displayName: Restoore NuGet Packages
       inputs:
         restoreSolution: WebAppWithDatabase.sln
+    
+    - task: MSBuild@1
+      displayName: Build SeleniumUiTests.csproj
+      inputs:
+        solution: SeleniumUiTests/SeleniumUiTests.csproj
+        msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: UI-Test'
+      inputs:
+        ArtifactName: ui-tests
 
   - job: Infrastructure
     displayName: Publish Infra files
