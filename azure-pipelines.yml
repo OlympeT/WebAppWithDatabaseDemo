@@ -24,6 +24,13 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/[Tt]est/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    testRunTitle: 'Test'
+
+- task: DotNetCoreCLI@2
   displayName: 'Publish'
   inputs:
     command: 'publish'
